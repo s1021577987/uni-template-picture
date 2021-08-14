@@ -84,35 +84,35 @@
 					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'http://127.0.0.1:8081/mingxing/97/8.jpg'},
 					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'http://127.0.0.1:8081/mingxing/97/9.jpg'},
 				]
-				// uni.request({
-				// 	url: this.$serverUrl + '/api/picture/posts.php?page=' + (this.refreshing ? 1 : this.fetchPageNum) +
-				// 		'&per_page=5',
-				// 	success: (ret) => {
-				// 		console.log('data', ret);
-				// 		if (ret.statusCode !== 200) {
-				// 			console.log('失败!');
-				// 		} else {
-				// 			if (this.refreshing && ret.data[0].id === this.list[0].id) {
-				// 				uni.showToast({
-				// 					title: '已经最新',
-				// 					icon: 'none',
-				// 				})
-				// 				this.refreshing = false;
-				// 				uni.stopPullDownRefresh();
-				// 				return;
-				// 			}
-				// 			if (this.refreshing) {
-				// 				this.refreshing = false;
-				// 				uni.stopPullDownRefresh()
-				// 				this.list = ret.data;
-				// 				this.fetchPageNum = 2;
-				// 			} else {
-				// 				this.list = this.list.concat(ret.data);
-				// 				this.fetchPageNum += 1;
-				// 			}
-				// 		}
-				// 	}
-				// });
+				uni.request({
+					url: this.$serverUrl + '/api/picture/posts.php?page=' + (this.refreshing ? 1 : this.fetchPageNum) +
+						'&per_page=5',
+					success: (ret) => {
+						console.log('data', ret);
+						if (ret.statusCode !== 200) {
+							console.log('失败!');
+						} else {
+							if (this.refreshing && ret.data[0].id === this.list[0].id) {
+								uni.showToast({
+									title: '已经最新',
+									icon: 'none',
+								})
+								this.refreshing = false;
+								uni.stopPullDownRefresh();
+								return;
+							}
+							if (this.refreshing) {
+								this.refreshing = false;
+								uni.stopPullDownRefresh()
+								this.list = ret.data;
+								this.fetchPageNum = 2;
+							} else {
+								this.list = this.list.concat(ret.data);
+								this.fetchPageNum += 1;
+							}
+						}
+					}
+				});
 			},
 			goDetail(e) {
 				uni.navigateTo({
