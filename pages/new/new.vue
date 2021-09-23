@@ -1,5 +1,6 @@
 <template>
 	<view class="index">
+		<meta name="referrer" content="never">
 		<block v-for="item in list" :key="item.img_src">
 			<view class="card" @click="goDetail(item)">
 				<image class="card-img" :src="item.img_src" mode="aspectFill"></image>
@@ -28,39 +29,39 @@
 		},
 		onLoad() {
 			this.getData();
-			uni.getProvider({
-				service: 'share',
-				success: (e) => {
-					let data = []
-					for (let i = 0; i < e.provider.length; i++) {
-						switch (e.provider[i]) {
-							case 'weixin':
-								data.push({
-									name: '分享到微信好友',
-									id: 'weixin'
-								})
-								data.push({
-									name: '分享到微信朋友圈',
-									id: 'weixin',
-									type: 'WXSenceTimeline'
-								})
-								break;
-							case 'qq':
-								data.push({
-									name: '分享到QQ',
-									id: 'qq'
-								})
-								break;
-							default:
-								break;
-						}
-					}
-					this.providerList = data;
-				},
-				fail: (e) => {
-					console.log('获取分享通道失败', e);
-				}
-			});
+			// uni.getProvider({
+			// 	service: 'share',
+			// 	success: (e) => {
+			// 		let data = []
+			// 		for (let i = 0; i < e.provider.length; i++) {
+			// 			switch (e.provider[i]) {
+			// 				case 'weixin':
+			// 					data.push({
+			// 						name: '分享到微信好友',
+			// 						id: 'weixin'
+			// 					})
+			// 					data.push({
+			// 						name: '分享到微信朋友圈',
+			// 						id: 'weixin',
+			// 						type: 'WXSenceTimeline'
+			// 					})
+			// 					break;
+			// 				case 'qq':
+			// 					data.push({
+			// 						name: '分享到QQ',
+			// 						id: 'qq'
+			// 					})
+			// 					break;
+			// 				default:
+			// 					break;
+			// 			}
+			// 		}
+			// 		this.providerList = data;
+			// 	},
+			// 	fail: (e) => {
+			// 		console.log('获取分享通道失败', e);
+			// 	}
+			// });
 		},
 		onReachBottom() {
 			console.log('滑动到页面底部')
@@ -74,45 +75,39 @@
 		methods: {
 			getData() {
 				this.list = [
-					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'http://127.0.0.1:8081/mingxing/97/1.jpg'},
-					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'http://127.0.0.1:8081/mingxing/97/2.jpg'},
-					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'http://127.0.0.1:8081/mingxing/97/3.jpg'},
-					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'http://127.0.0.1:8081/mingxing/97/4.jpg'},
-					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'http://127.0.0.1:8081/mingxing/97/5.jpg'},
-					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'http://127.0.0.1:8081/mingxing/97/6.jpg'},
-					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'http://127.0.0.1:8081/mingxing/97/7.jpg'},
-					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'http://127.0.0.1:8081/mingxing/97/8.jpg'},
-					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'http://127.0.0.1:8081/mingxing/97/9.jpg'},
+					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx1.sinaimg.cn%2Fmw690%2F003Ruflbgy1gtvpc5ntexj61o03lyncd02.jpg&refer=http%3A%2F%2Fwx1.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1634548181&t=3bba4ca5c9e67761cf6a507f6910e7a3'},
+					{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'https://img1.hnllsy.com/pic/1727/2.jpg'},
+					// {guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'https://img1.hnllsy.com/pic/1727/3.jpg'},
 				]
-				uni.request({
-					url: this.$serverUrl + '/api/picture/posts.php?page=' + (this.refreshing ? 1 : this.fetchPageNum) +
-						'&per_page=5',
-					success: (ret) => {
-						console.log('data', ret);
-						if (ret.statusCode !== 200) {
-							console.log('失败!');
-						} else {
-							if (this.refreshing && ret.data[0].id === this.list[0].id) {
-								uni.showToast({
-									title: '已经最新',
-									icon: 'none',
-								})
-								this.refreshing = false;
-								uni.stopPullDownRefresh();
-								return;
-							}
-							if (this.refreshing) {
-								this.refreshing = false;
-								uni.stopPullDownRefresh()
-								this.list = ret.data;
-								this.fetchPageNum = 2;
-							} else {
-								this.list = this.list.concat(ret.data);
-								this.fetchPageNum += 1;
-							}
-						}
-					}
-				});
+				// uni.request({
+				// 	url: this.$serverUrl + '/api/picture/posts.php?page=' + (this.refreshing ? 1 : this.fetchPageNum) +
+				// 		'&per_page=5',
+				// 	success: (ret) => {
+				// 		console.log('data', ret);
+				// 		if (ret.statusCode !== 200) {
+				// 			console.log('失败!');
+				// 		} else {
+				// 			if (this.refreshing && ret.data[0].id === this.list[0].id) {
+				// 				uni.showToast({
+				// 					title: '已经最新',
+				// 					icon: 'none',
+				// 				})
+				// 				this.refreshing = false;
+				// 				uni.stopPullDownRefresh();
+				// 				return;
+				// 			}
+				// 			if (this.refreshing) {
+				// 				this.refreshing = false;
+				// 				uni.stopPullDownRefresh()
+				// 				this.list = ret.data;
+				// 				this.fetchPageNum = 2;
+				// 			} else {
+				// 				this.list = this.list.concat(ret.data);
+				// 				this.fetchPageNum += 1;
+				// 			}
+				// 		}
+				// 	}
+				// });
 			},
 			goDetail(e) {
 				uni.navigateTo({
