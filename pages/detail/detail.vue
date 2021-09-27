@@ -40,46 +40,49 @@
 			this.screenHeight = uni.getSystemInfoSync().windowHeight;
 			this.detailDec = e.data;
 			let data = JSON.parse(decodeURIComponent(e.data));
-			this.imgLength = data.img_num;
-			this.data.push(data.img_src);
-			this.getData(data.id);
+			this.imgLength = data.img_count;
+			// this.data.push(data.img_src);
+			for (var i = 1; i <= data.img_count; i++) {
+				this.data.push(data.detail_path+"/"+i+".jpg");
+			}
+			// this.getData(data.id);
 			uni.setNavigationBarTitle({
 				title: "1/" + this.imgLength
 			});
 			// 获取分享通道
-			uni.getProvider({
-				service: "share",
-				success: (e) => {
-					let data = []
-					for (let i = 0; i < e.provider.length; i++) {
-						switch (e.provider[i]) {
-							case 'weixin':
-								data.push({
-									name: '分享到微信好友',
-									id: 'weixin'
-								})
-								data.push({
-									name: '分享到微信朋友圈',
-									id: 'weixin',
-									type: 'WXSenceTimeline'
-								})
-								break;
-							case 'qq':
-								data.push({
-									name: '分享到QQ',
-									id: 'qq'
-								})
-								break;
-							default:
-								break;
-						}
-					}
-					this.providerList = data;
-				},
-				fail: (e) => {
-					console.log("获取登录通道失败", e);
-				}
-			});
+			// uni.getProvider({
+			// 	service: "share",
+			// 	success: (e) => {
+			// 		let data = []
+			// 		for (let i = 0; i < e.provider.length; i++) {
+			// 			switch (e.provider[i]) {
+			// 				case 'weixin':
+			// 					data.push({
+			// 						name: '分享到微信好友',
+			// 						id: 'weixin'
+			// 					})
+			// 					data.push({
+			// 						name: '分享到微信朋友圈',
+			// 						id: 'weixin',
+			// 						type: 'WXSenceTimeline'
+			// 					})
+			// 					break;
+			// 				case 'qq':
+			// 					data.push({
+			// 						name: '分享到QQ',
+			// 						id: 'qq'
+			// 					})
+			// 					break;
+			// 				default:
+			// 					break;
+			// 			}
+			// 		}
+			// 		this.providerList = data;
+			// 	},
+			// 	fail: (e) => {
+			// 		console.log("获取登录通道失败", e);
+			// 	}
+			// });
 		},
 		onShareAppMessage() {
 			return {

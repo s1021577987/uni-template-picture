@@ -3,7 +3,7 @@ import App from './App'
 
 Vue.config.productionTip = false
 
-Vue.prototype.$serverUrl = 'https://unidemo.dcloud.net.cn';
+Vue.prototype.$serverUrl = 'http://192.168.2.186:8000';
 // Vue.http.headers.common['Referer'] = 'http://www.mm131.net/';
 console.log({...App})
 
