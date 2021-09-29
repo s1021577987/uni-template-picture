@@ -5,6 +5,7 @@
 				<image :src="value" mode="widthFix"></image>
 			</swiper-item>
 		</swiper>
+		
 		<!-- #ifndef H5 -->
 		<view class="detail-btn-view">
 			<view class="download" @click="download"></view>
@@ -39,16 +40,24 @@
 			// #endif
 			this.screenHeight = uni.getSystemInfoSync().windowHeight;
 			this.detailDec = e.data;
+			
 			let data = JSON.parse(decodeURIComponent(e.data));
 			this.imgLength = data.img_count;
-			// this.data.push(data.img_src);
 			for (var i = 1; i <= data.img_count; i++) {
 				this.data.push(data.detail_path+"/"+i+".jpg");
 			}
+			
+			// this.data = [
+			// 	"https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-uni-app-doc/6acec660-4f31-11eb-a16f-5b3e54966275.jpg",
+			// 	"https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbpic.588ku.com%2Felement_origin_min_pic%2F16%2F08%2F19%2F1457b6a76c7756c.jpg&refer=http%3A%2F%2Fbpic.588ku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1635491134&t=8adb1c9701c8e293ee64dfebd213156a",
+			// ]			
+			// this.imgLength = this.data.length;
+			
 			// this.getData(data.id);
 			uni.setNavigationBarTitle({
 				title: "1/" + this.imgLength
 			});
+			
 			// 获取分享通道
 			// uni.getProvider({
 			// 	service: "share",
@@ -263,11 +272,13 @@
 	}
 
 	swiper {
-		flex: 1;
+		/* flex: 1;
 		width: 750upx;
 		background-color: #000;
 		display: flex;
-		flex-direction: column;
+		flex-direction: column; */
+		
+		width: 100%;
 	}
 
 	swiper-item {
@@ -278,5 +289,10 @@
 	image {
 		width: 750upx;
 		height: 1125upx;
+	}
+	
+	.detail-image {
+		width: 100%;
+		
 	}
 </style>

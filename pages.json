@@ -1,5 +1,14 @@
 {
-	"pages": [{
+	"pages": [
+		// {
+		// 	"path": "pages/test",
+		// 	"style": {
+		// 		"navigationBarTitleText": "详情",
+		// 		"navigationBarBackgroundColor": "#000000",
+		// 		"backgroundColor": "#000000"
+		// 	}
+		// },
+		{
 			//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 			"path": "pages/new/new",
 			"style": {
@@ -80,7 +89,8 @@
 		"selectedColor": "#FF80AB",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
-		"list": [{
+		"list": [
+			{
 				"pagePath": "pages/new/new",
 				"iconPath": "static/index-0.png",
 				"selectedIconPath": "static/index-1.png",

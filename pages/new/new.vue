@@ -75,10 +75,9 @@
 		methods: {
 			getData() {
 				// this.list = [
-				// 	{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx1.sinaimg.cn%2Fmw690%2F003Ruflbgy1gtvpc5ntexj61o03lyncd02.jpg&refer=http%3A%2F%2Fwx1.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1634548181&t=3bba4ca5c9e67761cf6a507f6910e7a3'},
-				// 	{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'https://img1.hnllsy.com/pic/1727/2.jpg'},
-				// 	{guid:'sdfdfg43535', img_num:2, title:'tttt', img_src:'https://img1.hnllsy.com/pic/1727/3.jpg'},
+				// 	{img_num:2, title:'tttt', cover_url:'https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-uni-app-doc/6acec660-4f31-11eb-a16f-5b3e54966275.jpg', img_count:2},
 				// ]
+				
 				
 				uni.request({
 					url: this.$serverUrl + '/newpicture?page=' + (this.refreshing ? 1 : this.fetchPageNum) +

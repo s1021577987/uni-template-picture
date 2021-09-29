@@ -51,6 +51,11 @@
         <meta-data
             android:name="dcloud_appkey"
             android:value="4bcf721db6b570dd1cdfb2ef38f23286" />
+
+        <meta-data android:name="DCLOUD_AD_ID" android:value="__UNI__BAB27C1"/>
+        <meta-data android:name="DCLOUD_AD_SPLASH" android:value="true"/><!--如果不开启开屏广告则不设置此字段或者值设置为false-->
+        <meta-data android:name="DCLOUD_STREAMAPP_CHANNEL" android:value="包名|应用标识|广告标识|渠道，如io.dcloud.appid|appid|adid|google" /><!--为了保证广告统计的有效性，请正确设置此值-->
+
     </application>
 
 </manifest>

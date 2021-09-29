@@ -13,7 +13,15 @@
     "versionCode" : 102,
     "app-plus" : {
         "usingComponents" : true,
-        "compilerVersion" : 3
+        "compilerVersion" : 3,
+        "uniStatistics" : {
+            "enable" : true
+        },
+        "distribute" : {
+            "sdkConfigs" : {
+                "ad" : {}
+            }
+        }
     },
     // 5+App特有相关
     "quickapp" : {},
@@ -22,22 +30,50 @@
         "setting" : {
             "urlCheck" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        }
     },
     "mp-alipay" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        }
     },
     "mp-baidu" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        }
     },
     "mp-toutiao" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        }
     },
     "h5" : {
         "template" : "template.h5.html",
         "router" : {
             "mode" : "hash",
             "base" : "/demo/picture/website/"
+        },
+        "uniStatistics" : {
+            "enable" : false
+        }
+    },
+    "uniStatistics" : {
+        "enable" : false
+    },
+    "mp-kuaishou" : {
+        "uniStatistics" : {
+            "enable" : false
+        }
+    },
+    "mp-qq" : {
+        "uniStatistics" : {
+            "enable" : false
         }
     }
 }
